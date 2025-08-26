@@ -1,7 +1,52 @@
+import GoogleIcon from "@mui/icons-material/Google";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import { Link } from "react-router-dom";
+
 export default function Login() {
   return (
-    <div className="w-screen h-screen bg-amber-300 box-border">
-      <div className="border-gray-400">Login</div>
+    <div className="w-screen min-h-screen flex items-center justify-center bg-white text-gray-800">
+      <div className="border-2 border-gray-500 w-[80%] md:w-[30%] rounded-xl flex flex-col items-center p-6 shadow-lg">
+        {/* Header */}
+        <div className="text-gray-900 text-2xl md:text-3xl lg:text-4xl font-bold mb-6 flex items-center justify-center w-full">
+          Login
+        </div>
+
+        {/* Form */}
+        <form className="w-full flex flex-col gap-4">
+          <input
+            type="text"
+            placeholder="Email"
+            className="border-2 border-gray-300 p-3 rounded-md w-full outline-none"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="border-2 border-gray-300 p-3 rounded-md w-full outline-none"
+          />
+          <button
+            className="bg-blue-500 text-white py-3 rounded-md w-full text-lg hover:scale-105 transition-transform"
+            style={{ transitionDuration: "2s" }} // long smooth hover
+          >
+            Login
+          </button>
+          <div className="text-sm text-center">
+            Don't have an account?{" "}
+            <Link to="/register" className="text-blue-500 hover:underline">
+              Create Account
+            </Link>
+          </div>
+        </form>
+
+        {/* Social Login Buttons */}
+        <div className="flex gap-4 mt-6 w-full">
+          <button className="flex items-center justify-center border-2 border-gray-300 px-4 py-2 rounded-md bg-white w-1/2 hover:bg-gray-100 transition">
+            <GoogleIcon className="text-blue-500 mr-2" /> Google
+          </button>
+          <button className="flex items-center justify-center border-2 border-gray-300 px-4 py-2 rounded-md bg-white w-1/2 hover:bg-gray-100 transition">
+            <FacebookIcon className="text-blue-600 mr-2" /> Facebook
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
