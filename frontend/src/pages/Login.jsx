@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Login() {
   return (
     <div className="w-screen min-h-screen flex items-center justify-center bg-white text-gray-800">
-      <div className="border-2 border-gray-500 w-[80%] md:w-[30%] rounded-xl flex flex-col items-center p-6 shadow-lg">
+      <div className="border-2 border-gray-200 w-[80%] md:w-[35%] lg:w-[30%] rounded-xl flex flex-col items-center p-6 shadow-md shadow-gray-500">
         {/* Header */}
         <div className="text-gray-900 text-2xl md:text-3xl lg:text-4xl font-bold mb-6 flex items-center justify-center w-full">
           Login
