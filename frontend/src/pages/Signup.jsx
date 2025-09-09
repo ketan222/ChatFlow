@@ -42,7 +42,7 @@ export default function Signup() {
           <button className="flex items-center justify-center border-2 border-gray-300 px-4 py-2 rounded-md bg-white w-1/2 hover:bg-gray-100 transition">
             <GoogleIcon className="text-blue-500 mr-2" /> Google
           </button>
-          <button className="flex items-center justify-center border-2 border-gray-300 px-4 py-2 rounded-md bg-white w-1/2 hover:bg-gray-100 transition">
+          <button className="flex items-center justify-center border-2 border-gray-300 px-4 py-2 rounded-md bg-white w-1/2 hover:bg-gray-100 transition ">
             <FacebookIcon className="text-blue-600 mr-2" /> Facebook
           </button>
         </div>
