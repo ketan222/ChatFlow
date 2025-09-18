@@ -1,8 +1,10 @@
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function Login() {
+  const [loading, setLoading] = useState(false);
   return (
     <div className="w-screen min-h-screen flex items-center justify-center bg-white text-gray-800">
       <div className="border-2 border-gray-200 w-[80%] md:w-[35%] lg:w-[30%] rounded-xl flex flex-col items-center p-6 shadow-md shadow-gray-500">
@@ -26,12 +28,21 @@ export default function Login() {
           <button
             className="bg-blue-500 text-white py-3 rounded-md w-full text-lg hover:scale-105 transition-transform"
             style={{ transitionDuration: "2s" }} // long smooth hover
+            disabled={loading}
+            onClick={(e) => {
+              e.preventDefault();
+              setLoading(true);
+            }}
           >
-            Login
+            {loading ? "Loading..." : "Login"}
           </button>
           <div className="text-sm text-center">
             Don't have an account?{" "}
-            <Link to="/signup" className="text-blue-500 hover:underline">
+            <Link
+              to={`${loading ? "#" : "/signup"}`}
+              className="text-blue-500 hover:underline"
+              disabled={loading}
+            >
               Create Account
             </Link>
           </div>
