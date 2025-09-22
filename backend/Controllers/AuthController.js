@@ -48,3 +48,44 @@ export const signup = async function (req, res) {
     res.status(500).json({ message: err.message || "Internal Server Error" });
   }
 };
+
+export const login = async function (req, res) {
+  try {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res
+        .status(400)
+        .json({ message: "Email and Password are required" });
+    }
+
+    const [user] = await ChatFlowUser.find({ email }).select("+password");
+
+    if (!user) {
+      return res.status(401).json({ message: "Invalid email or password" });
+    }
+
+    console.log(user);
+    const isPasswordCorrect = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordCorrect) {
+      return res.status(401).json({ message: "Invalid email or password" });
+    }
+
+    const token = cookie(user._id);
+
+    const cookieOptions = {
+      expires: new Date(
+        Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+      ),
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      // sameSite: "strict",
+    };
+    res.cookie("ChatFlow-User", token, cookieOptions);
+    res.status(200).json({ status: "success", token, user });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: err.message || "Internal Server Error" });
+  }
+};
